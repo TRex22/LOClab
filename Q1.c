@@ -1,5 +1,3 @@
-#include <iostream>
-#include <cstdio>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -10,7 +8,7 @@
 //accpet or reject a string
 //Alphabet is a,b 
 
-using namespace std;
+//using namespace std;
 
 char ReadChar (FILE *file)
 {
@@ -32,12 +30,14 @@ char ReadChar (FILE *file)
 
 void accept()
 {
-	cout << "Accpeted" << endl;
+	//cout << "Accpeted" << endl;
+	printf("Accepted\n");
 }
 
 void reject()
 {
-	cout << "Rejected" << endl;
+	//cout << "Rejected" << endl;
+	printf("Rejected\n");
 }
 
 int q0(char c)
@@ -124,8 +124,8 @@ int main()
 	char str; //=ReadChar(file);
 	while ((str = fgetc(file)) != EOF) {
 
-        
-		printf("\n%c\n", str);
+        printf("C: %c\n",str);
+		//printf("\n%c state: %d\n", str, state);
 		switch (state)
 		{
 			case 0: state = q0(str);
@@ -141,9 +141,19 @@ int main()
 			default: printf("hello\n");
 				break;
 		}
-		char str = ReadChar(file);
-		printf("Ping!!\n");
+		//char str = ReadChar(file);
+		//printf("Ping!!\n");
 	}//while(str != '\n');
+	
+	switch (state)
+	{
+		case 0: accept();
+			break;
+		case 3: accept();
+			break;
+		default: reject();
+			break;
+	}
 	
 	fclose(file);
 	return 0;
